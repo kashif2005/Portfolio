@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="Description" content="Enter your description here" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="asstes/css/style.css">
+    <title>Persnol Portfolio</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="header ">
+            <div class="logo tracking-in-expand-fwd">
+                <h1>Portfolio</h1>
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="skills.html">Resume</a></li>
+                    <li><a href="projects.html">Projects</a></li>
+                    <li><a href="contact.html">Contact Me</a></li>
+                    <button class="nav-btn tracking-in-expand-fwd">Hire Me</button>
+                </ul>
+            </div>
+        </div>
+
+        <div class="contact">
+            <div class="right-section">
+                <div class="right-text">
+                    <h1>Let's work together</h1>
+                    <p>I design and code beautifully simple things and i love what i do. Just simple like that</p>
+                </div>
+                <form action="#">
+                    <div class="input-top">
+                        <input type="text" id="" placeholder="First name">
+                        <input type="text" id="" placeholder="Last name">
+                    </div>
+                    <div class="input-bottom">
+                        <input type="text" id="" placeholder="Email address">
+                        <input type="text" id="" placeholder="Phone number">
+                    </div>
+                    <div class="message">
+                        <input type="text" placeholder="Message">
+                    </div>
+                    <button class="contact-btn">Sent Message</button>
+                </form>
+            </div>
+
+            <div class="left-section">
+                <div class="contact-logo">
+                    <i class="fa-solid fa-phone"> </i><span>Phone</span>
+                    <p>+92 168603143</p>
+                </div>
+                <div class="contact-logo">
+                    <i class="fa-solid fa-envelope"> </i><span>Email</span>
+                    <p>kk1397442@gmail.com</p>
+                </div>
+                <div class="contact-logo">
+                    <i class="fa-solid fa-location-dot"> </i><span>Address</span>
+                    <p>Shah Faisal Colony Block #4</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-footer">
+        <div class="footer">
+            <div class="footer-logo">
+                <img src="img/Logo KK.png" alt="">
+                <!-- <h3>KK</h3> -->
+            </div>
+            <div class="footer-nav">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">About</a></li>
+                    <li><a href="#">Resume</a></li>
+                    <li><a href="#">Projects</a></li>
+                    <li><a href="#">Contact Me</a></li>
+                </ul>
+            </div>
+            <p>@2024 All right reserved by Kashif Khan</p>
+        </div>
+    </div>
+
+    <script src="main.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.9.2/umd/popper.min.js "></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/js/bootstrap.min.js "></script>
+    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init();
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var $grid = $('.project-wrap').isotope({});
+            $('.round').on('click', 'a', function() {
+                var filterValue = $(this).attr('data-filter');
+
+                $('.round a').removeClass('active')
+                $(this).addClass("active")
+                $grid.isotope({
+                    filter: filterValue
+                });
+            });
+        });
+
+        textCounter()
+
+        function textCounter() {
+            gsap.registerPlugin(ScrollTrigger);
+            gsap.from(".counter-num span", {
+                textContent: "0",
+                duration: 2,
+                ease: "power1.inOut",
+                modifiers: {
+                    textContent: value => formatNumber(value, 0)
+                },
+                scrollTrigger: {
+                    trigger: ".counter",
+                    start: "top+=40% 80%",
+                    toggleActions: "play none none reverse",
+                }
+            });
+
+            function formatNumber(value, decimals) {
+                let s = (+value).toLocaleString('en-US').split(".");
+                return decimals ? s[0] + "." + ((s[1] || "") + "00000000").substr(0, decimals) : s[0];
+            }
+        }
+    </script>
+
+</body>
+
+</html>
